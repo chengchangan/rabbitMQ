@@ -10,4 +10,7 @@ public abstract class Message implements Serializable {
     public abstract String exchange();
 
     public abstract String routingKey();
+
+
+    //测试提交
 }
