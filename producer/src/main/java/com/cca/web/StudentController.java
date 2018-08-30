@@ -28,15 +28,18 @@ public class StudentController {
         StudentMessage message = new StudentMessage();
         message.setName("张三"+id);
         message.setAge(20);
-        for (int i = 0 ; i<100; i++){
-            message.setAge(message.getAge()+1);
+//        for (int i = 0 ; i<100; i++){
+//            message.setAge(message.getAge()+1);
             messageSender.send(message);
-        }
+//        }
         System.out.println("=============="+id);
 
     }
 
     public void test1(){
-        amqpTemplate.convertAndSend("queue","hello world");
+        StudentMessage message = new StudentMessage();
+        message.setName("张三");
+        message.setAge(202);
+        messageSender.send(message);
     }
 }
