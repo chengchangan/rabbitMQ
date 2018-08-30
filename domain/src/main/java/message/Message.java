@@ -10,4 +10,7 @@ public abstract class Message {
     public abstract String exchange();
 
     public abstract String routingKey();
+
+
+    //测试提交
 }
