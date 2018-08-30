@@ -124,6 +124,12 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-10" />
+    <option name="y" value="-10" />
+    <option name="width" value="1940" />
+    <option name="height" value="1050" />
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -320,6 +326,8 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.StudentControllerTest.test1" />
+        <item itemvalue="JUnit.StudentControllerTest" />
         <item itemvalue="JUnit.StudentControllerTest.test1" />
         <item itemvalue="JUnit.StudentControllerTest" />
       </list>
