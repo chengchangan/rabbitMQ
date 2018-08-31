@@ -26,8 +26,8 @@ public class WebConfiguration {
     SimpleRabbitListenerContainerFactory factory = new SimpleRabbitListenerContainerFactory();
     ExecutorService service = Executors.newFixedThreadPool(100, bizExecutor);
     factory.setTaskExecutor(service);
-    factory.setConcurrentConsumers(100);
-    factory.setPrefetchCount(5);
+//    factory.setConcurrentConsumers(50);
+//    factory.setPrefetchCount(5);
     factory.setAcknowledgeMode(AcknowledgeMode.MANUAL);
     factory.setMessageConverter(new Jackson2JsonMessageConverter());
     configurer.configure(factory, connectionFactory);

@@ -17,8 +17,13 @@ public class StudentControllerTest {
     StudentController studentController;
 
     @Test
-    public void test1() throws Exception {
-        studentController.test1();
+    public void topic() throws Exception {
+        studentController.topic();
+    }
+
+    @Test
+    public void fanout(){
+        studentController.fanout();
     }
 
 

@@ -2,6 +2,7 @@ package com.cca.web;
 
 import com.cca.MessageSender;
 import message.StudentMessage;
+import message.UserMessage;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -36,10 +37,17 @@ public class StudentController {
 
     }
 
-    public void test1(){
+    public void topic(){
         StudentMessage message = new StudentMessage();
         message.setName("张三");
         message.setAge(202);
         messageSender.send(message);
+    }
+
+    public void fanout(){
+        UserMessage userMessage = new UserMessage();
+        userMessage.setAge(100);
+        userMessage.setName("fanout");
+        messageSender.send(userMessage);
     }
 }

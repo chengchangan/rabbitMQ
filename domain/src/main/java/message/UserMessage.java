@@ -3,7 +3,7 @@ package message;
 /**
  * Created by Administrator on 2018/4/21.
  */
-public class StudentMessage extends Message {
+public class UserMessage extends Message {
 
     private String name;
 
@@ -11,12 +11,12 @@ public class StudentMessage extends Message {
 
     @Override
     public String exchange() {
-        return "com.cca.topic";
+        return "com.cca.fanout";
     }
 
     @Override
     public String routingKey() {
-        return "com.cca.test.print";
+        return "com.cca.test.fanout";
     }
 
     public String getName() {
@@ -37,9 +37,9 @@ public class StudentMessage extends Message {
 
     @Override
     public String toString() {
-        return "StudentMessage{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
+        return "UserMessage{" +
+            "name='" + name + '\'' +
+            ", age=" + age +
+            '}';
     }
 }

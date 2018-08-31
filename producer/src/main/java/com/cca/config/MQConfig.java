@@ -1,5 +1,7 @@
 package com.cca.config;
 
+import message.Constants;
+import org.apache.tomcat.util.bcel.Const;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Exchange;
@@ -26,12 +28,12 @@ public class MQConfig {
      */
     @Bean
     public Exchange topicExchange(){
-        return ExchangeBuilder.topicExchange("com.cca.topic").build();
+        return ExchangeBuilder.topicExchange(Constants.TOPIC_EXCHANGE).build();
     }
 
     @Bean
     public Queue topicQueue(){
-        return QueueBuilder.durable("com.cca.test.create").build();
+        return QueueBuilder.durable(Constants.TOPIC_QUEUE).build();
     }
 
     @Bean
@@ -40,7 +42,7 @@ public class MQConfig {
         return BindingBuilder
             .bind(topicQueue)
             .to(topicExchange)
-            .with("com.cca.test.create")
+            .with(Constants.TOPIC_BINDING_KEY)
             .noargs();
     }
 
@@ -51,17 +53,17 @@ public class MQConfig {
      */
     @Bean
     public Exchange fanoutExchange(){
-        return ExchangeBuilder.fanoutExchange("com.cca.fanout").build();
+        return ExchangeBuilder.fanoutExchange(Constants.FANOUT_EXCHANGE).build();
     }
 
     @Bean
     public Queue fanoutQueueOne(){
-        return QueueBuilder.durable("com.cca.topicOne").build();
+        return QueueBuilder.durable(Constants.FANOUT_QUEUE_ONE).build();
     }
 
     @Bean
     public Queue fanoutQueueTwo(){
-        return QueueBuilder.durable("com.cca.topicTwo").build();
+        return QueueBuilder.durable(Constants.FANOUT_QUEUE_TWO).build();
     }
 
     @Bean
@@ -69,7 +71,7 @@ public class MQConfig {
         @Qualifier("fanoutQueueOne") Queue fanoutQueueOne){
         return BindingBuilder.bind(fanoutQueueOne)
             .to(fanoutExchange)
-            .with("com.cca.test.fanout").noargs();
+            .with(Constants.FANOUT_BINDING_KEY).noargs();
     }
 
     @Bean
@@ -77,7 +79,7 @@ public class MQConfig {
         @Qualifier("fanoutQueueTwo") Queue fanoutQueueTwo){
         return BindingBuilder.bind(fanoutQueueTwo)
             .to(fanoutExchange)
-            .with("com.cca.test.fanout").noargs();
+            .with(Constants.FANOUT_BINDING_KEY).noargs();
     }
 
 }
