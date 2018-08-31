@@ -2,9 +2,13 @@ package com.cca.config;
 
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.Exchange;
+import org.springframework.amqp.core.ExchangeBuilder;
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.amqp.core.TopicExchange;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,43 +25,59 @@ public class MQConfig {
      * 创建Topic交换机
      */
     @Bean
-    public TopicExchange topicExchange(){
-        return new TopicExchange("com.cca.test");
+    public Exchange topicExchange(){
+        return ExchangeBuilder.topicExchange("com.cca.topic").build();
     }
 
     @Bean
     public Queue topicQueue(){
-        return new Queue("com.cca.test.create");
+        return QueueBuilder.durable("com.cca.test.create").build();
     }
 
     @Bean
-    public Binding bindingTest(TopicExchange topicExchange,Queue topicQueue){
-        return BindingBuilder.bind(topicQueue).to(topicExchange).with("com.cca.test.create");
+    public Binding topicBindingTest(@Qualifier("topicExchange") Exchange topicExchange,
+        @Qualifier("topicQueue") Queue topicQueue){
+        return BindingBuilder
+            .bind(topicQueue)
+            .to(topicExchange)
+            .with("com.cca.test.create")
+            .noargs();
     }
+
 
     /**
      * @return
      * 创建fanoutExchange交换机
      */
     @Bean
-    public FanoutExchange fanoutExchange(){
-        return new FanoutExchange("com.cca.fanoutExchange");
+    public Exchange fanoutExchange(){
+        return ExchangeBuilder.fanoutExchange("com.cca.fanout").build();
     }
 
     @Bean
-    public Queue topicQueueOne(){
-        return new Queue("com.cca.topicOne");
+    public Queue fanoutQueueOne(){
+        return QueueBuilder.durable("com.cca.topicOne").build();
     }
 
     @Bean
-    public Queue topicQueueTwo(){
-        return new Queue("com.cca.topicTwo");
+    public Queue fanoutQueueTwo(){
+        return QueueBuilder.durable("com.cca.topicTwo").build();
     }
 
-//    public Binding bindingQueueToFanout(Queue topicQueueOne,Queue topicQueueTwo,FanoutExchange fanoutExchange){
-//
-//    }
+    @Bean
+    public Binding fanoutBingTestOne(@Qualifier("fanoutExchange") Exchange fanoutExchange,
+        @Qualifier("fanoutQueueOne") Queue fanoutQueueOne){
+        return BindingBuilder.bind(fanoutQueueOne)
+            .to(fanoutExchange)
+            .with("com.cca.test.fanout").noargs();
+    }
 
-
+    @Bean
+    public Binding fanoutBingTestTwo(@Qualifier("fanoutExchange") Exchange fanoutExchange,
+        @Qualifier("fanoutQueueTwo") Queue fanoutQueueTwo){
+        return BindingBuilder.bind(fanoutQueueTwo)
+            .to(fanoutExchange)
+            .with("com.cca.test.fanout").noargs();
+    }
 
 }

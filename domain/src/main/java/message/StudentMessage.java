@@ -11,7 +11,7 @@ public class StudentMessage extends Message {
 
     @Override
     public String exchange() {
-        return "com.cca.test";
+        return "com.cca.topic";
     }
 
     @Override
