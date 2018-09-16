@@ -13,18 +13,29 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class StudentControllerTest {
 
-    @Autowired
-    StudentController studentController;
+  @Autowired
+  StudentController studentController;
 
-    @Test
-    public void topic() throws Exception {
-        studentController.topic();
-    }
+  @Test
+  public void direct() {
+    studentController.direct();
+  }
 
-    @Test
-    public void fanout(){
-        studentController.fanout();
-    }
+  @Test
+  public void topicSendOne() {
+    studentController.topicSendOne();
+  }
+
+  @Test
+  public void topicSendTwo() {
+    studentController.topicSendTwo();
+  }
+
+
+  @Test
+  public void fanout() {
+    studentController.fanout();
+  }
 
 
 }

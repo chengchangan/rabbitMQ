@@ -1,12 +1,12 @@
 package com.cca.web;
 
 import com.cca.MessageSender;
-import message.StudentMessage;
-import message.UserMessage;
-import org.springframework.amqp.core.AmqpTemplate;
+import message.CallNameMessage;
+import message.ClearClassRoomOneMessage;
+import message.ClearClassRoomTwoMessage;
+import message.GoToClassMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,33 +21,28 @@ public class StudentController {
     @Autowired
     MessageSender messageSender;
 
-    @Autowired
-    AmqpTemplate amqpTemplate;
 
-    @RequestMapping("/test/{id}")
-    public void test(@PathVariable String id){
-        StudentMessage message = new StudentMessage();
-        message.setName("张三"+id);
-        message.setAge(20);
-//        for (int i = 0 ; i<100; i++){
-//            message.setAge(message.getAge()+1);
-            messageSender.send(message);
-//        }
-        System.out.println("=============="+id);
-
-    }
-
-    public void topic(){
-        StudentMessage message = new StudentMessage();
-        message.setName("张三");
-        message.setAge(202);
+    public void direct(){
+        CallNameMessage message = new CallNameMessage();
+        message.setStudentId(1L);
         messageSender.send(message);
     }
 
     public void fanout(){
-        UserMessage userMessage = new UserMessage();
-        userMessage.setAge(100);
-        userMessage.setName("fanout");
-        messageSender.send(userMessage);
+        GoToClassMessage message = new GoToClassMessage();
+        message.setMessage("上课铃响了，所有学生进教室");
+        messageSender.send(message);
+    }
+
+    public void topicSendOne(){
+        ClearClassRoomOneMessage message = new ClearClassRoomOneMessage();
+        message.setClearRoomMessage("今天值日生开始打扫卫生");
+        messageSender.send(message);
+    }
+
+    public void topicSendTwo(){
+        ClearClassRoomTwoMessage message = new ClearClassRoomTwoMessage();
+        message.setClearRoomMessage("今天值日生开始打扫卫生");
+        messageSender.send(message);
     }
 }

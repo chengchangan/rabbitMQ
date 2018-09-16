@@ -1,9 +1,9 @@
-package com.cca.handler.fanout;
+package com.cca.handler.direct;
 
 import com.cca.handler.AbstractConsumer;
 import com.rabbitmq.client.Channel;
+import message.CallNameMessage;
 import message.Constants;
-import message.GoToClassMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;
@@ -16,21 +16,20 @@ import java.io.IOException;
 
 /**
  * @author Shenzhen cca
- * @version 2018/8/31
+ * @version 2018/9/16
  */
 @Component
-@RabbitListener(queues = Constants.FANOUT_QUEUE_ONE, containerFactory = Constants.FACTORY)
-public class FanoutConsumerOne extends AbstractConsumer {
+@RabbitListener(queues = Constants.DIRECT_QUEUE, containerFactory = Constants.FACTORY)
+public class DirectComsumer extends AbstractConsumer {
 
-  private static final Logger LOGGER = LoggerFactory.getLogger(FanoutConsumerOne.class);
-
+  private static final Logger LOGGER = LoggerFactory.getLogger(DirectComsumer.class);
 
   @RabbitHandler
-  void goToClass(GoToClassMessage message, Channel channel,
+  void callName(CallNameMessage message, Channel channel,
       @Header(AmqpHeaders.DELIVERY_TAG) long tag)
       throws IOException {
     run(message, channel, tag, () -> {
-      LOGGER.info("{} ，学生1回到教室", message.getMessage());
+      LOGGER.info("老师开始点名回答问题，学生：" + message.getStudentId() + "开始回答");
     });
   }
 }
