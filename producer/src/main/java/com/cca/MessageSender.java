@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 public class MessageSender {
 
     @Resource
-    RabbitTemplate rabbitTemplate;
+    private RabbitTemplate rabbitTemplate;
 
     public void send(Message message){
         rabbitTemplate.convertAndSend(message.exchange(),message.routingKey(),message);
