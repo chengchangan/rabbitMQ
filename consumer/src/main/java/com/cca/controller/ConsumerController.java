@@ -25,4 +25,11 @@ public class ConsumerController {
     //2
   }
 
+  public static final class Test{
+
+
+    public void test1(){
+      System.out.println("111");
+    }
+  }
 }
