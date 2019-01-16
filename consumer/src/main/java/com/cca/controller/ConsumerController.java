@@ -20,10 +20,8 @@ public class ConsumerController {
 
   @GetMapping()
   public void test(){
-    //删除修改文件
-    //修改了文件
-    //1
-    //2
+
+    //添加了文件
   }
 
   public static final class Test{
