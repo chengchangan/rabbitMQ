@@ -1,0 +1,21 @@
+# Created by .ignore support plugin (hsz.mobi)
+### Example user template template
+### Example user template
+
+# IntelliJ project files
+.idea
+*.iml
+out
+gen
+/.idea/workspace.xml
+consumer/src/main/resources/static/
+consumer/src/main/resources/templates/
+domain/src/main/java/domain/
+domain/target/classes/message/CallNameMessage.class
+domain/target/classes/message/ClearClassRoomOneMessage.class
+domain/target/classes/message/ClearClassRoomTwoMessage.class
+domain/target/classes/message/Constants.class
+domain/target/classes/message/GoToClassMessage.class
+domain/target/generated-sources/
+producer/src/main/resources/static/
+producer/src/main/resources/templates/
