@@ -1,10 +1,13 @@
 package com.cca.web;
 
+import com.alibaba.fastjson.JSONObject;
 import com.cca.MessageSender;
+import java.util.Date;
 import message.CallNameMessage;
 import message.ClearClassRoomOneMessage;
 import message.ClearClassRoomTwoMessage;
 import message.GoToClassMessage;
+import message.TestMessage;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -44,5 +47,25 @@ public class StudentController {
         ClearClassRoomTwoMessage message = new ClearClassRoomTwoMessage();
         message.setClearRoomMessage("今天值日生开始打扫卫生");
         messageSender.send(message);
+    }
+
+
+
+    public void test (){
+        TestMessage message = new TestMessage();
+        message.setMessage(sendCreateOrderMessage());
+        messageSender.send(message);
+
+    }
+
+    public String sendCreateOrderMessage() {
+        JSONObject message =  new JSONObject();
+        message.put("order_code", "123");
+        message.put("trade_id", "123");
+        message.put("event", "ORDER_CREATE");
+        message.put("storeName", "美甲帮商城");
+        message.put("timestamp", (new Date()).getTime()/1000);
+        return message.toJSONString();
+        //sendMessage("ORDER", message.toString());
     }
 }

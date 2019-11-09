@@ -1,7 +1,6 @@
 package com.cca.config;
 
 import message.Constants;
-import org.apache.tomcat.util.bcel.Const;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.BindingBuilder;
 import org.springframework.amqp.core.Exchange;
@@ -16,7 +15,9 @@ import org.springframework.context.annotation.Configuration;
 
 
 /**
- * Created by Administrator on 2018/4/21.
+ *
+ * @author cca
+ * @date 2018/4/21
  */
 @Configuration
 public class MQConfig {

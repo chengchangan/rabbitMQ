@@ -16,6 +16,9 @@ public class StudentControllerTest {
   @Autowired
   StudentController studentController;
 
+  /**
+   * test
+   */
   @Test
   public void direct() {
     studentController.direct();
@@ -31,10 +34,15 @@ public class StudentControllerTest {
     studentController.topicSendTwo();
   }
 
-
   @Test
   public void fanout() {
     studentController.fanout();
+  }
+
+
+  @Test
+  public void test() {
+    studentController.test();
   }
 
 

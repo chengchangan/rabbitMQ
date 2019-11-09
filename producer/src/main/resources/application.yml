@@ -6,3 +6,14 @@ spring:
     password: guest
 server:
   port: 8081
+
+
+#  spring:
+#    rabbitmq:
+#      host: 39.98.167.70
+#      port: 30004
+#      username: meijiabang
+#      password: MooYoo1491625367meijiabang
+#      virtual-host: meijiabang
+#  server:
+#    port: 8081
