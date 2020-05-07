@@ -11,7 +11,7 @@ public class ProducerApplicationTests {
 
 	@Test
 	public void contextLoads() {
-		System.out.println("我是错误的提交11");
+		System.out.println("我是错误的提交");
 
 	}
 
