@@ -1,0 +1,7 @@
+.idea/
+target/
+*.iml
+*-local*.yml
+*.log
+*-local.xml
+*-local.properties

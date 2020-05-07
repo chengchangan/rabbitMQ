@@ -3,7 +3,6 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.cca</groupId>
   <artifactId>consumer</artifactId>
   <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
@@ -22,6 +21,7 @@
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
     <java.version>1.8</java.version>
   </properties>
+
   <dependencies>
     <dependency>
       <groupId>com.cca</groupId>
@@ -34,6 +34,82 @@
       <version>0.0.1-SNAPSHOT</version>
     </dependency>
   </dependencies>
+
+  <build>
+    <!--资源文件处理-->
+    <resources>
+      <!--打包资源文件处理-->
+      <resource>
+        <!--原配资源文件地址-->
+        <directory>src/main/resources</directory>
+        <!--拷贝到目标地址-->
+        <targetPath>${dist.path}</targetPath>
+        <filtering>true</filtering>
+        <!--排除以下文件-->
+        <excludes>
+          <!--<exclude>**/*-dev*.yml</exclude>-->
+          <exclude>**/*-dev*.xml</exclude>
+          <exclude>**/*.xlsx</exclude>
+        </excludes>
+      </resource>
+      <!--本地启动配置文件处理-->
+      <resource>
+        <filtering>false</filtering>
+        <directory>src/main/resources</directory>
+      </resource>
+    </resources>
+
+    <plugins>
+      <!-- 不将配置文件打包进 jar -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <excludes>
+            <exclude>config/*</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <!--打包时去除第三方依赖-->
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+        <configuration>
+          <layout>ZIP</layout>
+          <includes>
+            <include>
+              <groupId>non-exists</groupId>
+              <artifactId>non-exists</artifactId>
+            </include>
+          </includes>
+          <outputDirectory>${dist.path}/lib</outputDirectory>
+        </configuration>
+      </plugin>
+
+      <!--拷贝第三方依赖文件到指定目录-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <!--target/lib是依赖jar包的输出目录，根据自己喜好配置-->
+              <outputDirectory>${dist.path}/lib</outputDirectory>
+              <excludeTransitive>false</excludeTransitive>
+              <stripVersion>false</stripVersion>
+              <includeScope>runtime</includeScope>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
 
 
 </project>
