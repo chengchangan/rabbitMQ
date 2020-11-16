@@ -1,16 +1,19 @@
 package com.cca.web;
 
+import com.cca.ProducerApplication;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * Created by Administrator on 2018/4/21.
  */
+@ActiveProfiles("dev")
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = ProducerApplication.class)
 public class StudentControllerTest {
 
   @Autowired

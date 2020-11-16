@@ -18,19 +18,4 @@ public class ConsumerController {
   MessageSender messageSender;
 
 
-  @GetMapping()
-  public void test(){
-    //删除修改文件
-    //修改了文件
-    //1
-    //2
-  }
-
-  public static final class Test{
-
-
-    public void test1(){
-      System.out.println("111");
-    }
-  }
 }

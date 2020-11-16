@@ -17,13 +17,16 @@ public abstract class AbstractConsumer {
       throws IOException {
     try {
       runnable.run();
+      // 该处的　true/false 表示是否批量签收
       channel.basicAck(tag, true);
     } catch (RuntimeException e) {
       LOGGER.error("消息处理异常！{},{},{}", this.getClass().getName(), message, e.getMessage());
+      // 重新放回队列
       channel.basicReject(tag, true);
     } catch (Exception e) {
       LOGGER.error("消息处理异常！{},{}", this.getClass().getName(), JSON.toJSONString(message));
       LOGGER.error("消息处理异常！", e);
+      // 消息抛弃
       channel.basicReject(tag, false);
     }
   }
