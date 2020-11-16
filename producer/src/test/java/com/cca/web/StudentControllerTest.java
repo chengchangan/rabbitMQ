@@ -45,7 +45,7 @@ public class StudentControllerTest {
 
   @Test
   public void delayMessage(){
-    studentController.directDelay();
+    studentController.directDelay(1);
   }
 
 }

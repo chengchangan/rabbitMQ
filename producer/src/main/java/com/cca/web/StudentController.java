@@ -30,9 +30,9 @@ public class StudentController {
         messageSender.send(message);
     }
 
-    public void directDelay(){
+    public void directDelay(Integer delayMinutes){
         DelayMessage message = new DelayMessage();
-        message.setDelayMinutes(1);
+        message.setDelayMinutes(delayMinutes);
         message.setMessage("我是一个延迟消息，发送时间："+LocalDateTime.now());
         messageSender.send(message);
     }
