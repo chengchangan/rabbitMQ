@@ -1,6 +1,6 @@
 package com.cca.config;
 
-import message.Constants;
+import com.cca.constants.Constants;
 import org.springframework.amqp.core.*;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;

@@ -1,4 +1,4 @@
-package message;
+package com.cca.constants;
 
 /**
  * @author Shenzhen cca

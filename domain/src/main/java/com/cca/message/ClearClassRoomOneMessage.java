@@ -1,4 +1,6 @@
-package message;
+package com.cca.message;
+
+import com.cca.constants.Constants;
 
 /**
  * 值日生打扫卫生 ， 一个消息，多个当天值日生 打扫卫生
@@ -6,7 +8,7 @@ package message;
  * @author Shenzhen cca
  * @version 2018/9/16
  */
-public class ClearClassRoomTwoMessage extends Message {
+public class ClearClassRoomOneMessage extends Message {
 
   private String clearRoomMessage;
 
@@ -25,6 +27,6 @@ public class ClearClassRoomTwoMessage extends Message {
 
   @Override
   public String routingKey() {
-    return "com.cca.topic.two.clear";
+    return "com.cca.topic.one.clear";
   }
 }

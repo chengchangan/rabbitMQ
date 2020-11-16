@@ -2,9 +2,9 @@ package com.cca.handler.topic;
 
 import com.cca.handler.AbstractConsumer;
 import com.rabbitmq.client.Channel;
-import message.ClearClassRoomOneMessage;
-import message.ClearClassRoomTwoMessage;
-import message.Constants;
+import com.cca.message.ClearClassRoomOneMessage;
+import com.cca.message.ClearClassRoomTwoMessage;
+import com.cca.constants.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;

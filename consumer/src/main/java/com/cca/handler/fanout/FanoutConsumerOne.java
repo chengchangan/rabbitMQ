@@ -1,9 +1,9 @@
 package com.cca.handler.fanout;
 
+import com.cca.constants.Constants;
 import com.cca.handler.AbstractConsumer;
 import com.rabbitmq.client.Channel;
-import message.Constants;
-import message.GoToClassMessage;
+import com.cca.message.GoToClassMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;

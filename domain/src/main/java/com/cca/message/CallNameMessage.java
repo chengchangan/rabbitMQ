@@ -1,4 +1,6 @@
-package message;
+package com.cca.message;
+
+import com.cca.constants.Constants;
 
 /**
  * 老师点名回答问题 ， 指定学生

@@ -2,8 +2,8 @@ package com.cca.handler.direct;
 
 import com.cca.handler.AbstractConsumer;
 import com.rabbitmq.client.Channel;
-import message.CallNameMessage;
-import message.Constants;
+import com.cca.message.CallNameMessage;
+import com.cca.constants.Constants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.annotation.RabbitHandler;

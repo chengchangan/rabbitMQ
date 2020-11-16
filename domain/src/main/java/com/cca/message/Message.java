@@ -1,4 +1,4 @@
-package message;
+package com.cca.message;
 
 /**
  * Created by Administrator on 2018/4/21.

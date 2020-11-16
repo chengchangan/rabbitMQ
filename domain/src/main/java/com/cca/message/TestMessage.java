@@ -1,12 +1,10 @@
-package message;
+package com.cca.message;
 
 /**
- * 上课了 ， 所有人听到铃声都得回到教室
- *
- * @author Shenzhen cca
- * @version 2018/9/16
+ * @author cca
+ * @version 2019/4/30 16:17 
  */
-public class GoToClassMessage extends Message {
+public class TestMessage extends Message {
 
   private String message;
 
@@ -20,11 +18,11 @@ public class GoToClassMessage extends Message {
 
   @Override
   public String exchange() {
-    return Constants.FANOUT_EXCHANGE;
+    return "order.exchange";
   }
 
   @Override
   public String routingKey() {
-    return null;
+    return "ORDER";
   }
 }
