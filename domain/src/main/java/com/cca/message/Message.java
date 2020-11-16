@@ -5,6 +5,19 @@ package com.cca.message;
  */
 public abstract class Message {
 
+  /**
+   * 延迟分钟数
+   */
+  private Integer delayMinutes;
+
+  public Integer getDelayMinutes() {
+    return delayMinutes;
+  }
+
+  public void setDelayMinutes(Integer delayMinutes) {
+    this.delayMinutes = delayMinutes;
+  }
+
   public abstract String exchange();
 
   public abstract String routingKey();

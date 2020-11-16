@@ -60,4 +60,22 @@ public class Constants {
    * 队列
    */
   public static final String DIRECT_QUEUE = "com.cca.direct.test";
+
+
+  /**
+   * 死信队列场景
+   */
+  // 普通队列
+  public static final String DIRECT_NORMAL_QUEUE = "com.cca.direct.normal.test";
+  // 普通队列路由key
+  public static final String DIRECT_NORMAL_BINDING_KEY = "com.cca.direct.normal";
+
+
+
+  // 死信队列
+  public static final String DIRECT_DELAY_QUEUE = "com.cca.direct.dead.test";
+  // 死信队列路由key
+  public static final String DIRECT_DELAY_BINDING_KEY = "com.cca.direct.dead";
+
+
 }

@@ -1,6 +1,6 @@
-package com.cca.handler.direct;
+package com.cca.consumer.direct;
 
-import com.cca.handler.AbstractConsumer;
+import com.cca.consumer.AbstractConsumer;
 import com.rabbitmq.client.Channel;
 import com.cca.message.CallNameMessage;
 import com.cca.constants.Constants;

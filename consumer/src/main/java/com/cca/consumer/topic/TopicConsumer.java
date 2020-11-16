@@ -1,6 +1,6 @@
-package com.cca.handler.topic;
+package com.cca.consumer.topic;
 
-import com.cca.handler.AbstractConsumer;
+import com.cca.consumer.AbstractConsumer;
 import com.rabbitmq.client.Channel;
 import com.cca.message.ClearClassRoomOneMessage;
 import com.cca.message.ClearClassRoomTwoMessage;

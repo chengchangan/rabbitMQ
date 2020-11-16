@@ -1,4 +1,4 @@
-package com.cca.handler;
+package com.cca.consumer;
 
 import com.alibaba.fastjson.JSON;
 import com.rabbitmq.client.Channel;

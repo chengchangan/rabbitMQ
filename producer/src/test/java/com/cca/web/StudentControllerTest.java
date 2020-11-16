@@ -44,11 +44,8 @@ public class StudentControllerTest {
 
 
   @Test
-  public void test() {
-    studentController.test();
+  public void delayMessage(){
+    studentController.directDelay();
   }
 
-  /**
-   * 错误提交的文件
-   */
 }

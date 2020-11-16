@@ -2,12 +2,11 @@ package com.cca.web;
 
 import com.alibaba.fastjson.JSONObject;
 import com.cca.MessageSender;
+
+import java.time.LocalDateTime;
 import java.util.Date;
-import com.cca.message.CallNameMessage;
-import com.cca.message.ClearClassRoomOneMessage;
-import com.cca.message.ClearClassRoomTwoMessage;
-import com.cca.message.GoToClassMessage;
-import com.cca.message.TestMessage;
+
+import com.cca.message.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,6 +30,13 @@ public class StudentController {
         messageSender.send(message);
     }
 
+    public void directDelay(){
+        DelayMessage message = new DelayMessage();
+        message.setDelayMinutes(1);
+        message.setMessage("我是一个延迟消息，发送时间："+LocalDateTime.now());
+        messageSender.send(message);
+    }
+
     public void fanout(){
         GoToClassMessage message = new GoToClassMessage();
         message.setMessage("上课铃响了，所有学生进教室");
@@ -51,21 +57,5 @@ public class StudentController {
 
 
 
-    public void test (){
-        TestMessage message = new TestMessage();
-        message.setMessage(sendCreateOrderMessage());
-        messageSender.send(message);
 
-    }
-
-    public String sendCreateOrderMessage() {
-        JSONObject message =  new JSONObject();
-        message.put("order_code", "123");
-        message.put("trade_id", "123");
-        message.put("event", "ORDER_CREATE");
-        message.put("storeName", "美甲帮商城");
-        message.put("timestamp", (new Date()).getTime()/1000);
-        return message.toJSONString();
-        //sendMessage("ORDER", message.toString());
-    }
 }
